@@ -1,0 +1,2 @@
+class YandexGptException(Exception):
+    pass
