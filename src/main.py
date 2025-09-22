@@ -8,6 +8,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from src.gpt.yandex_gpt import YandexGPTBot
 from src.models import HistoryItem, QuestionRequest
 from src.rag import RagClient
+from src.rag.rag import prepare_index
 from src.types.gpt import YandexGPTConfig
 
 logging.basicConfig(
@@ -25,9 +26,18 @@ PRIVATE_KEY = os.environ["PRIVATE_KEY"].replace("\\n", "\n")
 FOLDER_ID = os.environ["FOLDER_ID"]
 TELEGRAM_TOKEN = os.environ["BOT_TOKEN"]
 
+s3_cfg = {
+    "endpoint": os.environ["S3_ENDPOINT"],
+    "access_key": os.environ["S3_ACCESS_KEY"],
+    "secret_key": os.environ["S3_SECRET_KEY"],
+    "bucket": os.environ["S3_BUCKET"],
+    "prefix": os.environ.get("S3_PREFIX", ""),
+}
+
 gpt_bot = YandexGPTBot(
             YandexGPTConfig(SERVICE_ACCOUNT_ID, KEY_ID, PRIVATE_KEY, FOLDER_ID)
         )
+global_vector_store = prepare_index(s3_cfg)
 rag_client = RagClient()
 
 # Endpoints для работы с историей
@@ -87,7 +97,7 @@ async def rag_answer(
 ):
     """Получить ответ через RAG"""
     try:
-        answer = rag_client.rag_answer(gpt_bot, request.question, user_id)
+        answer = rag_client.rag_answer(vector_store=global_vector_store, yandex_bot=gpt_bot, query=request.question, user_id=user_id)
         return {"answer": answer}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
