@@ -54,6 +54,9 @@ class TBaseRagClient(ABC):
     @staticmethod
     @abstractmethod
     def rag_answer(
-        vector_store: TBaseVectorStore, yandex_bot, query: str, user_id: int
+        vector_store: TBaseVectorStore,
+        yandex_bot: TYandexGPTBot,
+        query: str,
+        user_id: int,
     ):
         pass

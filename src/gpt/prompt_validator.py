@@ -1,4 +1,7 @@
-from src.types.gpt import Message
+try:
+    from src.types.gpt import Message
+except ImportError:
+    from src.gpt.src.types.gpt import Message
 
 from ..types.abc import TPromptValidatorBot
 from .base_yandex_gpt import BaseYandexGPTBot

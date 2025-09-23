@@ -11,7 +11,10 @@ import faiss
 import fitz
 from sentence_transformers import SentenceTransformer
 
-from src.types.abc import TBaseVectorStore
+try:
+    from src.types.abc import TBaseVectorStore
+except ImportError:
+    from src.gpt.src.types.abc import TBaseVectorStore
 
 logger = logging.getLogger(__name__)
 

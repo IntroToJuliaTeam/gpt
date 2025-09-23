@@ -41,7 +41,6 @@ global_vector_store = prepare_index(s3_cfg)
 rag_client = RagClient()
 
 
-# Endpoints для работы с историей
 @app.get("/history/{user_id}", response_model=List)
 async def get_user_history(
     user_id: int,

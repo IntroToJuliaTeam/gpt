@@ -5,9 +5,14 @@ from typing import Dict, List
 import jwt
 import requests
 
-from src.exceptions.gpt import YandexGptException
-from src.types.abc import TBaseYandexGPTBot
-from src.types.gpt import Message, YandexGPTConfig
+try:
+    from src.exceptions.gpt import YandexGptException
+    from src.types.abc import TBaseYandexGPTBot
+    from src.types.gpt import Message, YandexGPTConfig
+except ImportError:
+    from src.gpt.src.exceptions.gpt import YandexGptException
+    from src.gpt.src.types.abc import TBaseYandexGPTBot
+    from src.gpt.src.types.gpt import Message, YandexGPTConfig
 
 
 class BaseYandexGPTBot(TBaseYandexGPTBot):
