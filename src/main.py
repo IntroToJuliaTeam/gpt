@@ -24,7 +24,6 @@ SERVICE_ACCOUNT_ID = os.environ["ACCOUNT_ID"]
 KEY_ID = os.environ["KEY_ID"]
 PRIVATE_KEY = os.environ["PRIVATE_KEY"].replace("\\n", "\n")
 FOLDER_ID = os.environ["FOLDER_ID"]
-TELEGRAM_TOKEN = os.environ["BOT_TOKEN"]
 
 s3_cfg = {
     "endpoint": os.environ["S3_ENDPOINT"],
