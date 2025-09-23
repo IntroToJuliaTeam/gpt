@@ -7,7 +7,7 @@ import requests
 
 from src.exceptions.gpt import YandexGptException
 from src.types.abc import TBaseYandexGPTBot
-from src.types.gpt import YandexGPTConfig, Message
+from src.types.gpt import Message, YandexGPTConfig
 
 
 class BaseYandexGPTBot(TBaseYandexGPTBot):

@@ -1,13 +1,14 @@
-import os
-import re
 import logging
+import os
+import pickle
+import re
 import tempfile
+from pathlib import Path
+from typing import Dict, List, Tuple
+
 import boto3
 import faiss
-import pickle
 import fitz
-from pathlib import Path
-from typing import List, Tuple, Dict
 from sentence_transformers import SentenceTransformer
 
 from src.types.abc import TBaseVectorStore
@@ -15,7 +16,8 @@ from src.types.abc import TBaseVectorStore
 logger = logging.getLogger(__name__)
 
 
-# файл делался Женей, ему не нравится использовать линтер, так что он выключен для этого файла в [конфиге](.pylintrc)
+# файл делался Женей, ему не нравится использовать линтер,
+# так что он выключен для этого файла в [конфиге](.pylintrc)
 # все вопросы к Жене, все равно я этот файл трогать не буду)))
 
 
@@ -86,8 +88,7 @@ def extract_text(path: str) -> str:
         except Exception as e:
             logger.error("Ошибка PDF %s: %s", path, e)
         return "\n".join(text)
-    else:
-        return ""
+    return ""
 
 
 # -----------------------------
@@ -150,7 +151,9 @@ class VectorStore(TBaseVectorStore):
             return []
         qv = self.model.encode([q], convert_to_numpy=True)
         # ищем больше кандидатов, чтобы потом фильтровать
-        D, I = self.index.search(qv, top_k * 3)
+        D, I = self.index.search(  # pylint: disable=invalid-name,unused-variable
+            qv, top_k * 3
+        )
         results = []
         for i in I[0]:
             if i < len(self.metadatas):
@@ -198,7 +201,9 @@ def build_context(results: List[Dict]) -> str:
 # -----------------------------
 # 7. Основная функция RAG
 # -----------------------------
-def rag_answer(vector_store: TBaseVectorStore, yandex_bot, query: str, user_id: int) -> str:
+def rag_answer(
+    vector_store: TBaseVectorStore, yandex_bot, query: str, user_id: int
+) -> str:
     results = vector_store.query(query, 5)
     context = build_context(results)
     # Тут с промптом можно поэкспериментировать

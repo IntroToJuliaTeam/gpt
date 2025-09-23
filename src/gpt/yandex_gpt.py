@@ -1,6 +1,6 @@
+from ..types.abc import TYandexGPTBot
 from .base_yandex_gpt import BaseYandexGPTBot
 from .prompt_validator import Validator
-from ..types.abc import TYandexGPTBot
 
 
 class YandexGPTBot(BaseYandexGPTBot, TYandexGPTBot):

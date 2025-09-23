@@ -1,6 +1,7 @@
-from .base_yandex_gpt import BaseYandexGPTBot
 from src.types.gpt import Message
+
 from ..types.abc import TPromptValidatorBot
+from .base_yandex_gpt import BaseYandexGPTBot
 
 
 class Validator(BaseYandexGPTBot, TPromptValidatorBot):

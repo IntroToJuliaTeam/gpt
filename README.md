@@ -36,3 +36,13 @@ uv sync
 ```commandline
 uv run -m src.main
 ```
+
+## Для локальной разработки
+
+Перед началом работы рекомендуется прописать 
+
+```commandline
+uv run pre-commit install
+```
+
+для работы git хука с линтерами.

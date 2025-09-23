@@ -37,18 +37,23 @@ class TBaseYandexGPTBot(ABC):
     def unsafe_ask_gpt(self, question: str, user_id: int = None) -> str:
         pass
 
+
 class TYandexGPTBot(TBaseYandexGPTBot):
     @abstractmethod
     def ask_gpt(self, question: str, user_id: int) -> str:
         pass
 
+
 class TPromptValidatorBot(TBaseYandexGPTBot):
     @abstractmethod
-    def check_prompt(self, propmt: str) -> bool:
+    def check_prompt(self, prompt: str) -> bool:
         pass
+
 
 class TBaseRagClient(ABC):
     @staticmethod
     @abstractmethod
-    def rag_answer(vector_store: TBaseVectorStore, yandex_bot, query: str, user_id: int):
+    def rag_answer(
+        vector_store: TBaseVectorStore, yandex_bot, query: str, user_id: int
+    ):
         pass
