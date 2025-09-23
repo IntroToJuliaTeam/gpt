@@ -3,7 +3,7 @@ from typing import Optional
 try:
     from src.mytypes.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
 except ImportError:
-    from src.gpt.src.types.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
+    from src.gpt.src.mytypes.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
 
 from .rag import VectorStore
 from .rag import rag_answer as rag_answer_base

@@ -11,8 +11,8 @@ try:
     from src.mytypes.gpt import Message, YandexGPTConfig
 except ImportError:
     from src.gpt.src.exceptions.gpt import YandexGptException
-    from src.gpt.src.types.abc import TBaseYandexGPTBot
-    from src.gpt.src.types.gpt import Message, YandexGPTConfig
+    from src.gpt.src.mytypes.abc import TBaseYandexGPTBot
+    from src.gpt.src.mytypes.gpt import Message, YandexGPTConfig
 
 
 class BaseYandexGPTBot(TBaseYandexGPTBot):

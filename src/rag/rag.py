@@ -14,7 +14,7 @@ from sentence_transformers import SentenceTransformer
 try:
     from src.mytypes.abc import TBaseVectorStore
 except ImportError:
-    from src.gpt.src.types.abc import TBaseVectorStore
+    from src.gpt.src.mytypes.abc import TBaseVectorStore
 
 logger = logging.getLogger(__name__)
 
