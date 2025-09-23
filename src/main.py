@@ -90,9 +90,8 @@ async def ask_gpt(
         raise HTTPException(status_code=500, detail=str(e)) from e
 
 
-@app.post("/rag/{user_id}")
+@app.post("/rag")
 async def rag_answer(
-    user_id: int,
     request: QuestionRequest,
 ):
     """Получить ответ через RAG"""
@@ -101,7 +100,7 @@ async def rag_answer(
             vector_store=global_vector_store,
             yandex_bot=gpt_bot,
             query=request.question,
-            user_id=user_id,
+            user_id=None,
         )
         return {"answer": answer}
     except Exception as e:

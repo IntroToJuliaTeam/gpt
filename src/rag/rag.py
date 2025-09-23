@@ -218,4 +218,4 @@ def rag_answer(
         "[USER]\n"
         f"{query}\n"
     )
-    return yandex_bot.ask_gpt(final_prompt, user_id)
+    return yandex_bot.unsafe_ask_gpt(final_prompt, user_id)

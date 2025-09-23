@@ -1,3 +1,5 @@
+from typing import Optional
+
 try:
     from src.types.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
 except ImportError:
@@ -13,6 +15,6 @@ class RagClient(TBaseRagClient):
         vector_store: TBaseVectorStore,
         yandex_bot: TYandexGPTBot,
         query: str,
-        user_id: int,
+        user_id: Optional[int] = None,
     ) -> str:
         return rag_answer_base(vector_store, yandex_bot, query, user_id)

@@ -8,9 +8,6 @@ class YandexGPTBot(BaseYandexGPTBot, TYandexGPTBot):
         super().__init__(config)
         self.validator = Validator(config)
 
-    def unsafe_ask_gpt(self, question: str, user_id: int = None):
-        raise AttributeError("'YandexGPTBot' object has no attribute 'unsafe_ask_gpt'")
-
     def ask_gpt(self, question: str, user_id: int) -> str:
         """Задать вопрос GPT с валидацией и историей пользователя"""
         is_valid_prompt = self.validator.check_prompt(question)
