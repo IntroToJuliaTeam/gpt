@@ -1,4 +1,4 @@
-from ..types.abc import TYandexGPTBot
+from ..mytypes.abc import TYandexGPTBot
 from .base_yandex_gpt import BaseYandexGPTBot
 from .prompt_validator import Validator
 

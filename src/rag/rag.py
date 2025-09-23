@@ -12,7 +12,7 @@ import fitz
 from sentence_transformers import SentenceTransformer
 
 try:
-    from src.types.abc import TBaseVectorStore
+    from src.mytypes.abc import TBaseVectorStore
 except ImportError:
     from src.gpt.src.types.abc import TBaseVectorStore
 

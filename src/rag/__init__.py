@@ -1,7 +1,7 @@
 from typing import Optional
 
 try:
-    from src.types.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
+    from src.mytypes.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
 except ImportError:
     from src.gpt.src.types.abc import TBaseRagClient, TBaseVectorStore, TYandexGPTBot
 

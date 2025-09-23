@@ -9,7 +9,7 @@ from src.gpt.yandex_gpt import YandexGPTBot
 from src.models import HistoryItem, QuestionRequest
 from src.rag import RagClient
 from src.rag.rag import prepare_index
-from src.types.gpt import YandexGPTConfig
+from src.mytypes.gpt import YandexGPTConfig
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
