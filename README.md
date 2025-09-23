@@ -48,3 +48,13 @@ uv run pre-commit install
 ```
 
 для работы git хука с линтерами.
+
+## Запуск в докере
+
+```commandLine
+docker build -t yandex-gpt-bot-backend .
+```
+
+```commandline
+ docker run --rm -it -p 8080:8080 --env-file .env yandex-gpt-bot-backend
+```
