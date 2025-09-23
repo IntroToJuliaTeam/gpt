@@ -25,6 +25,9 @@ KEY_ID = os.environ["KEY_ID"]
 PRIVATE_KEY = os.environ["PRIVATE_KEY"].replace("\\n", "\n")
 FOLDER_ID = os.environ["FOLDER_ID"]
 
+URL = os.environ["URL"]
+PORT = os.environ["PORT"]
+
 s3_cfg = {
     "endpoint": os.environ["S3_ENDPOINT"],
     "access_key": os.environ["S3_ACCESS_KEY"],
@@ -110,4 +113,4 @@ async def rag_answer(
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=URL, port=int(PORT))
