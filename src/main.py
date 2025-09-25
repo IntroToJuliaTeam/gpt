@@ -7,9 +7,9 @@ from fastapi import FastAPI, HTTPException
 
 from src.gpt.yandex_gpt import YandexGPTBot
 from src.models import HistoryItem, QuestionRequest
+from src.mytypes.gpt import YandexGPTConfig
 from src.rag import RagClient
 from src.rag.rag import prepare_index
-from src.mytypes.gpt import YandexGPTConfig
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -25,8 +25,8 @@ KEY_ID = os.environ["KEY_ID"]
 PRIVATE_KEY = os.environ["PRIVATE_KEY"].replace("\\n", "\n")
 FOLDER_ID = os.environ["FOLDER_ID"]
 
-URL = os.environ["URL"]
-PORT = os.environ["PORT"]
+URL = os.environ["BACKEND_HOSTNAME"]
+PORT = os.environ["BACKEND_PORT"]
 
 s3_cfg = {
     "endpoint": os.environ["S3_ENDPOINT"],
