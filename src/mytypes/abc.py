@@ -50,6 +50,12 @@ class TPromptValidatorBot(TBaseYandexGPTBot):
         pass
 
 
+class TAnswerValidatorBot(TBaseYandexGPTBot):
+    @abstractmethod
+    def check_answer(self, answer: str) -> bool:
+        pass
+
+
 class TBaseRagClient(ABC):
     @staticmethod
     @abstractmethod

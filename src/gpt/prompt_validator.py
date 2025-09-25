@@ -7,7 +7,7 @@ from ..mytypes.abc import TPromptValidatorBot
 from .base_yandex_gpt import BaseYandexGPTBot
 
 
-class Validator(BaseYandexGPTBot, TPromptValidatorBot):
+class PromptValidator(BaseYandexGPTBot, TPromptValidatorBot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
