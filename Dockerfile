@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Sync the project into a new environment, asserting the lockfile is up to date
 WORKDIR /app
-RUN uv sync
+RUN uv sync --no-dev
 
 # ---------- runtime stage ----------
 FROM python:3.13-slim
