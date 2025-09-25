@@ -81,4 +81,4 @@ class AnswerValidator(BaseYandexGPTBot, TAnswerValidatorBot):
 
         response_final = response.split("\n")[0].split(" ")[0].strip().strip("\n")
 
-        return response_final == "Да"
+        return response_final[0:2] == "Да"
